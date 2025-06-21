@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { ChevronDown, Play, Sparkles, MapPin } from "lucide-react";
+import { Play, Sparkles, MapPin } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { t } = useTranslation();
 
   const slides = [
     {
       image: "/hero/1.jpg",
-      title: "Discover Paradise",
-      subtitle: "Experience the breathtaking beauty of Sri Lanka",
+      title: t("home.hero.title"),
+      subtitle: t("home.hero.subtitle"),
       accent: "The Pearl of the Indian Ocean awaits",
     },
     {
@@ -125,7 +127,7 @@ const Hero: React.FC = () => {
             style={{ animationDelay: "0.4s" }}
           >
             <button className="group relative overflow-hidden bg-gradient-to-r from-emerald-600 via-teal-600 to-sapphire-600 text-white px-10 py-4 rounded-full text-lg font-semibold shadow-2xl hover:shadow-emerald-500/25 transform hover:scale-105 transition-all duration-500 animate-pulse-glow">
-              <span className="relative z-10">Explore Tours</span>
+              <span className="relative z-10">{t("home.hero.cta")}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-sapphire-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </button>
 
@@ -165,7 +167,7 @@ const Hero: React.FC = () => {
       >
         <div className="flex flex-col items-center gap-2">
           <span className="text-sm font-medium opacity-80 group-hover:opacity-100">
-            Discover More
+            {t("home.hero.scrollDown")}
           </span>
           <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center group-hover:border-emerald-300">
             <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce group-hover:bg-emerald-300" />
