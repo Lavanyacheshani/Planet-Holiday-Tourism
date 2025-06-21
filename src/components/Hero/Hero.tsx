@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { ChevronDown, Play, Sparkles, MapPin } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { ChevronDown, Play, Sparkles, MapPin } from "lucide-react";
 
 const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
     {
-      image: '/hero/1.jpg',
-      title: 'Discover Paradise',
-      subtitle: 'Experience the breathtaking beauty of Sri Lanka',
-      accent: 'The Pearl of the Indian Ocean awaits',
+      image: "/hero/1.jpg",
+      title: "Discover Paradise",
+      subtitle: "Experience the breathtaking beauty of Sri Lanka",
+      accent: "The Pearl of the Indian Ocean awaits",
     },
     {
-      image: '/hero/2.jpg',
-      title: 'Ancient Wonders',
-      subtitle: 'Explore centuries-old temples and cultural heritage',
-      accent: 'Where history comes alive',
+      image: "/hero/2.jpg",
+      title: "Ancient Wonders",
+      subtitle: "Explore centuries-old temples and cultural heritage",
+      accent: "Where history comes alive",
     },
     {
-      image: '/hero/3.jpg',
-      title: 'Wild Adventures',
-      subtitle: 'Encounter exotic wildlife in pristine national parks',
-      accent: 'Nature\'s greatest spectacle',
+      image: "/hero/3.jpg",
+      title: "Wild Adventures",
+      subtitle: "Encounter exotic wildlife in pristine national parks",
+      accent: "Nature's greatest spectacle",
     },
   ];
 
@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
   const scrollToContent = () => {
     window.scrollTo({
       top: window.innerHeight,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   };
 
@@ -47,7 +47,9 @@ const Hero: React.FC = () => {
         <div
           key={index}
           className={`absolute inset-0 transition-all duration-2000 ${
-            index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-110'
+            index === currentSlide
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-110"
           }`}
         >
           <div
@@ -55,6 +57,7 @@ const Hero: React.FC = () => {
             style={{ backgroundImage: `url(${slide.image})` }}
           />
           {/* Enhanced Gradient Overlay */}
+
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
           <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/20 via-transparent to-sapphire-900/20" />
         </div>
@@ -73,7 +76,7 @@ const Hero: React.FC = () => {
               animationDuration: `${4 + Math.random() * 4}s`,
             }}
           >
-            <Sparkles 
+            <Sparkles
               className="w-2 h-2 text-white"
               style={{
                 filter: `hue-rotate(${Math.random() * 120}deg)`,
@@ -102,24 +105,30 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Main Title with Gradient */}
-          <h1 className="heading-primary mb-6 animate-fade-in-up">
-            <span className="block text-gradient-gold animate-text-glow">
-              {slides[currentSlide].title}
-            </span>
+          <h1 className="heading-primary text-9xl mb-6 animate-fade-in-up">
+            {/* <span className="block text-gradient-gold animate-text-glow"> */}
+            {slides[currentSlide].title}
+            {/* </span> */}
           </h1>
 
           {/* Subtitle */}
-          <p className="text-body-large mb-12 animate-fade-in-up opacity-90 font-light max-w-4xl mx-auto" style={{ animationDelay: '0.2s' }}>
+          <p
+            className="text-body-large mb-12 animate-fade-in-up opacity-90 font-light max-w-4xl mx-auto"
+            style={{ animationDelay: "0.2s" }}
+          >
             {slides[currentSlide].subtitle}
           </p>
 
           {/* Enhanced CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          <div
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in-up"
+            style={{ animationDelay: "0.4s" }}
+          >
             <button className="group relative overflow-hidden bg-gradient-to-r from-emerald-600 via-teal-600 to-sapphire-600 text-white px-10 py-4 rounded-full text-lg font-semibold shadow-2xl hover:shadow-emerald-500/25 transform hover:scale-105 transition-all duration-500 animate-pulse-glow">
               <span className="relative z-10">Explore Tours</span>
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-sapphire-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </button>
-            
+
             <button className="group flex items-center gap-3 glass-effect text-white px-10 py-4 rounded-full text-lg font-semibold border border-white/30 hover:bg-white/20 transform hover:scale-105 transition-all duration-500">
               <Play className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
               <span>Watch Story</span>
@@ -127,7 +136,6 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Stats Bar */}
-          
         </div>
       </div>
 
@@ -138,9 +146,9 @@ const Hero: React.FC = () => {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`relative overflow-hidden transition-all duration-500 ${
-              index === currentSlide 
-                ? 'w-12 h-3 bg-gradient-to-r from-emerald-400 to-teal-400 shadow-glow' 
-                : 'w-3 h-3 bg-white/30 hover:bg-white/50'
+              index === currentSlide
+                ? "w-12 h-3 bg-gradient-to-r from-emerald-400 to-teal-400 shadow-glow"
+                : "w-3 h-3 bg-white/30 hover:bg-white/50"
             } rounded-full`}
           >
             {index === currentSlide && (
@@ -156,7 +164,9 @@ const Hero: React.FC = () => {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce-gentle cursor-pointer hover:text-emerald-300 transition-colors duration-300 group"
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-sm font-medium opacity-80 group-hover:opacity-100">Discover More</span>
+          <span className="text-sm font-medium opacity-80 group-hover:opacity-100">
+            Discover More
+          </span>
           <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center group-hover:border-emerald-300">
             <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce group-hover:bg-emerald-300" />
           </div>
