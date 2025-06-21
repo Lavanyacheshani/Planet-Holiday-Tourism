@@ -1,54 +1,79 @@
-import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
+import React, { useState } from "react";
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
+import { googleFormsService } from "../services/googleFormsService";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    tourInterest: '',
-    travelDates: '',
-    groupSize: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    tourInterest: "",
+    travelDates: "",
+    groupSize: "",
+    message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        tourInterest: '',
-        travelDates: '',
-        groupSize: '',
-        message: '',
-      });
-    }, 3000);
+    setIsSubmitting(true);
+
+    try {
+      // Submit to Google Forms
+      const success = await googleFormsService.submitBooking(formData);
+
+      if (success) {
+        setIsSubmitted(true);
+        console.log("Form submitted successfully to Google Forms:", formData);
+
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            tourInterest: "",
+            travelDates: "",
+            groupSize: "",
+            message: "",
+          });
+        }, 3000);
+      } else {
+        alert(
+          "There was an error submitting your form. Please try again or contact us directly."
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert(
+        "There was an error submitting your form. Please try again or contact us directly."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const tourOptions = [
-    'Cultural Triangle Explorer',
-    'Beach & Wildlife Adventure',
-    'Hill Country Escape',
-    'Luxury Ceylon Experience',
-    'Adventure Seeker Special',
-    'Family Fun Package',
-    'Custom Tour Package',
+    "Cultural Triangle Explorer",
+    "Beach & Wildlife Adventure",
+    "Hill Country Escape",
+    "Luxury Ceylon Experience",
+    "Adventure Seeker Special",
+    "Family Fun Package",
+    "Custom Tour Package",
   ];
 
   return (
@@ -61,7 +86,8 @@ const Contact: React.FC = () => {
               Contact Us
             </h1>
             <p className="text-xl lg:text-2xl max-w-3xl mx-auto animate-slide-up">
-              Ready to start your Sri Lankan adventure? Get in touch and let's plan your perfect journey
+              Ready to start your Sri Lankan adventure? Get in touch and let's
+              plan your perfect journey
             </p>
           </div>
         </div>
@@ -73,13 +99,18 @@ const Contact: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div className="animate-slide-in-left">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Send us a Message</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">
+                Send us a Message
+              </h2>
+
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Full Name *
                       </label>
                       <input
@@ -94,7 +125,10 @@ const Contact: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Email Address *
                       </label>
                       <input
@@ -112,7 +146,10 @@ const Contact: React.FC = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Phone Number
                       </label>
                       <input
@@ -126,7 +163,10 @@ const Contact: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="tourInterest" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="tourInterest"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Tour Interest
                       </label>
                       <select
@@ -148,7 +188,10 @@ const Contact: React.FC = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="travelDates" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="travelDates"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Preferred Travel Dates
                       </label>
                       <input
@@ -162,7 +205,10 @@ const Contact: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="groupSize" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label
+                        htmlFor="groupSize"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                      >
                         Group Size
                       </label>
                       <select
@@ -183,7 +229,10 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                       Message
                     </label>
                     <textarea
@@ -199,18 +248,31 @@ const Contact: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="w-full bg-primary-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-primary-700 transition-colors duration-300 flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary-600 text-white py-4 rounded-lg font-semibold text-lg hover:bg-primary-700 transition-colors duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-5 h-5" />
-                    Send Message
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </form>
               ) : (
                 <div className="text-center py-12 animate-scale-in">
                   <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    Message Sent!
+                  </h3>
                   <p className="text-gray-600">
-                    Thank you for your interest. We'll get back to you within 24 hours.
+                    Thank you for your interest. We'll get back to you within 24
+                    hours.
                   </p>
                 </div>
               )}
@@ -218,18 +280,24 @@ const Contact: React.FC = () => {
 
             {/* Contact Information */}
             <div className="animate-slide-in-right">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">Get in Touch</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">
+                Get in Touch
+              </h2>
+
               <div className="space-y-8 mb-8">
                 <div className="flex items-start gap-4">
                   <div className="bg-primary-100 p-3 rounded-full">
                     <MapPin className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Office Address</h4>
+                    <h4 className="font-semibold text-gray-900 mb-1">
+                      Office Address
+                    </h4>
                     <p className="text-gray-600">
-                      123 Galle Road<br />
-                      Colombo 03, Sri Lanka<br />
+                      123 Galle Road
+                      <br />
+                      Colombo 03, Sri Lanka
+                      <br />
                       10300
                     </p>
                   </div>
@@ -240,10 +308,14 @@ const Contact: React.FC = () => {
                     <Phone className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Phone Numbers</h4>
+                    <h4 className="font-semibold text-gray-900 mb-1">
+                      Phone Numbers
+                    </h4>
                     <p className="text-gray-600">
-                      Primary: +94 77 123 4567<br />
-                      Secondary: +94 11 234 5678<br />
+                      Primary: +94 77 123 4567
+                      <br />
+                      Secondary: +94 11 234 5678
+                      <br />
                       WhatsApp: +94 77 123 4567
                     </p>
                   </div>
@@ -254,10 +326,14 @@ const Contact: React.FC = () => {
                     <Mail className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Email Addresses</h4>
+                    <h4 className="font-semibold text-gray-900 mb-1">
+                      Email Addresses
+                    </h4>
                     <p className="text-gray-600">
-                      General: info@planethoday.lk<br />
-                      Bookings: bookings@planethoday.lk<br />
+                      General: info@planethoday.lk
+                      <br />
+                      Bookings: bookings@planethoday.lk
+                      <br />
                       Support: support@planethoday.lk
                     </p>
                   </div>
@@ -268,10 +344,14 @@ const Contact: React.FC = () => {
                     <Clock className="w-6 h-6 text-primary-600" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">Office Hours</h4>
+                    <h4 className="font-semibold text-gray-900 mb-1">
+                      Office Hours
+                    </h4>
                     <p className="text-gray-600">
-                      Monday - Friday: 8:00 AM - 6:00 PM<br />
-                      Saturday: 9:00 AM - 4:00 PM<br />
+                      Monday - Friday: 8:00 AM - 6:00 PM
+                      <br />
+                      Saturday: 9:00 AM - 4:00 PM
+                      <br />
                       Sunday: Emergency only
                     </p>
                   </div>
@@ -285,7 +365,9 @@ const Contact: React.FC = () => {
 
               {/* Quick Contact */}
               <div className="mt-8 p-6 bg-primary-50 rounded-lg">
-                <h4 className="font-semibold text-gray-900 mb-4">Need Immediate Assistance?</h4>
+                <h4 className="font-semibold text-gray-900 mb-4">
+                  Need Immediate Assistance?
+                </h4>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <a
                     href="tel:+94771234567"
@@ -323,24 +405,29 @@ const Contact: React.FC = () => {
           <div className="space-y-4">
             {[
               {
-                question: 'Do I need a visa to visit Sri Lanka?',
-                answer: 'Most visitors need an Electronic Travel Authorization (ETA) or visa. We can help you with the application process and requirements based on your nationality.',
+                question: "Do I need a visa to visit Sri Lanka?",
+                answer:
+                  "Most visitors need an Electronic Travel Authorization (ETA) or visa. We can help you with the application process and requirements based on your nationality.",
               },
               {
-                question: 'What is the best time to visit Sri Lanka?',
-                answer: 'Sri Lanka can be visited year-round, but the best time depends on which regions you want to explore. December to March is ideal for the west and south coasts, while April to September is perfect for the east coast.',
+                question: "What is the best time to visit Sri Lanka?",
+                answer:
+                  "Sri Lanka can be visited year-round, but the best time depends on which regions you want to explore. December to March is ideal for the west and south coasts, while April to September is perfect for the east coast.",
               },
               {
-                question: 'Are your tours suitable for families with children?',
-                answer: 'Absolutely! We offer family-friendly packages and can customize tours to accommodate children of all ages. Our guides are experienced in working with families.',
+                question: "Are your tours suitable for families with children?",
+                answer:
+                  "Absolutely! We offer family-friendly packages and can customize tours to accommodate children of all ages. Our guides are experienced in working with families.",
               },
               {
-                question: 'What is included in your tour packages?',
-                answer: 'Our packages typically include accommodation, meals as specified, transportation, entrance fees, and professional guide services. Specific inclusions vary by package.',
+                question: "What is included in your tour packages?",
+                answer:
+                  "Our packages typically include accommodation, meals as specified, transportation, entrance fees, and professional guide services. Specific inclusions vary by package.",
               },
               {
-                question: 'Can you arrange custom itineraries?',
-                answer: 'Yes! We specialize in creating personalized experiences based on your interests, budget, and timeframe. Contact us to discuss your dream Sri Lankan adventure.',
+                question: "Can you arrange custom itineraries?",
+                answer:
+                  "Yes! We specialize in creating personalized experiences based on your interests, budget, and timeframe. Contact us to discuss your dream Sri Lankan adventure.",
               },
             ].map((faq, index) => (
               <details
@@ -349,7 +436,9 @@ const Contact: React.FC = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <summary className="p-6 cursor-pointer hover:bg-gray-50 rounded-lg transition-colors duration-300">
-                  <span className="font-semibold text-gray-900">{faq.question}</span>
+                  <span className="font-semibold text-gray-900">
+                    {faq.question}
+                  </span>
                 </summary>
                 <div className="px-6 pb-6">
                   <p className="text-gray-600 leading-relaxed">{faq.answer}</p>

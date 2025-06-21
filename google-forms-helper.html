@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Forms Entry ID Finder</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        background: #f5f5f5;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+      .step {
+        background: white;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border-left: 4px solid #007cba;
+      }
+      .code {
+        background: #f0f0f0;
+        padding: 10px;
+        border-radius: 4px;
+        font-family: monospace;
+        margin: 10px 0;
+      }
+      .warning {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        color: #856404;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+      .success {
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+      input[type="url"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      button {
+        background: #007cba;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 10px 0;
+      }
+      button:hover {
+        background: #005a87;
+      }
+      #results {
+        margin-top: 20px;
+      }
+      .entry-id {
+        background: #e8f5e8;
+        padding: 8px;
+        margin: 5px 0;
+        border-radius: 4px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🔍 Google Forms Entry ID Finder</h1>
+    <p>This tool helps you find the entry IDs for your Google Form fields.</p>
+
+    <div class="container">
+      <h2>Step 1: Get Your Google Form URL</h2>
+      <div class="step">
+        <ol>
+          <li>Go to your Google Form</li>
+          <li>Click the "Send" button</li>
+          <li>
+            Copy the form URL (it should look like:
+            <code>https://docs.google.com/forms/d/e/1FAIpQLSf.../viewform</code
+            >)
+          </li>
+        </ol>
+      </div>
+
+      <h2>Step 2: Enter Your Form URL</h2>
+      <input
+        type="url"
+        id="formUrl"
+        placeholder="https://docs.google.com/forms/d/e/1FAIpQLSf.../viewform"
+      />
+      <button onclick="findEntryIds()">Find Entry IDs</button>
+    </div>
+
+    <div id="results"></div>
+
+    <div class="warning">
+      <strong>⚠️ Important:</strong> This tool works by fetching your form's
+      HTML and parsing it. Make sure your form is published and publicly
+      accessible.
+    </div>
+
+    <div class="container">
+      <h2>Manual Method (If the tool doesn't work)</h2>
+      <div class="step">
+        <ol>
+          <li>Open your Google Form in a web browser</li>
+          <li>Right-click on the page and select "View Page Source"</li>
+          <li>Press Ctrl+F (or Cmd+F on Mac) to search</li>
+          <li>Search for "entry." (with the dot)</li>
+          <li>Look for patterns like <code>entry.1234567890</code></li>
+          <li>Note down each entry ID and match it to your form fields</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>Expected Form Fields</h2>
+      <p>Your Google Form should have these fields:</p>
+      <ul>
+        <li><strong>Full Name</strong> (Short answer)</li>
+        <li><strong>Email Address</strong> (Short answer)</li>
+        <li><strong>Phone Number</strong> (Short answer)</li>
+        <li><strong>Tour Interest</strong> (Multiple choice or dropdown)</li>
+        <li><strong>Travel Dates</strong> (Short answer)</li>
+        <li><strong>Group Size</strong> (Multiple choice or dropdown)</li>
+        <li><strong>Message</strong> (Paragraph)</li>
+      </ul>
+    </div>
+
+    <div class="success">
+      <strong>✅ Next Steps:</strong> Once you have your entry IDs, go to your
+      website's admin panel at <code>/admin</code> and configure them in the
+      Settings tab.
+    </div>
+
+    <script>
+      async function findEntryIds() {
+        const formUrl = document.getElementById("formUrl").value;
+        const resultsDiv = document.getElementById("results");
+
+        if (!formUrl) {
+          alert("Please enter a Google Form URL");
+          return;
+        }
+
+        resultsDiv.innerHTML = "<p>Searching for entry IDs...</p>";
+
+        try {
+          // Convert viewform URL to formResponse URL
+          const formResponseUrl = formUrl.replace("/viewform", "/formResponse");
+
+          // Fetch the form HTML
+          const response = await fetch(formResponseUrl);
+          const html = await response.text();
+
+          // Find all entry IDs
+          const entryIdRegex = /entry\.\d+/g;
+          const entryIds = [...new Set(html.match(entryIdRegex))];
+
+          if (entryIds.length > 0) {
+            resultsDiv.innerHTML = `
+                        <div class="success">
+                            <h3>✅ Found ${entryIds.length} Entry IDs:</h3>
+                            ${entryIds
+                              .map((id) => `<div class="entry-id">${id}</div>`)
+                              .join("")}
+                        </div>
+                        <div class="step">
+                            <h4>How to use these:</h4>
+                            <ol>
+                                <li>Copy each entry ID</li>
+                                <li>Go to your website's admin panel at <code>/admin</code></li>
+                                <li>Navigate to the Settings tab</li>
+                                <li>Enter these entry IDs in the corresponding fields</li>
+                                <li>Test the integration using the "Send Test Booking" button</li>
+                            </ol>
+                        </div>
+                    `;
+          } else {
+            resultsDiv.innerHTML = `
+                        <div class="warning">
+                            <h3>❌ No entry IDs found</h3>
+                            <p>This might be because:</p>
+                            <ul>
+                                <li>The form is not published</li>
+                                <li>The form URL is incorrect</li>
+                                <li>The form has restricted access</li>
+                            </ul>
+                            <p>Try the manual method described above.</p>
+                        </div>
+                    `;
+          }
+        } catch (error) {
+          resultsDiv.innerHTML = `
+                    <div class="warning">
+                        <h3>❌ Error fetching form data</h3>
+                        <p>This might be due to CORS restrictions. Please use the manual method described above.</p>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+        }
+      }
+
+      // Auto-detect form URL from clipboard or URL parameters
+      window.addEventListener("load", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const formUrl = urlParams.get("formUrl");
+        if (formUrl) {
+          document.getElementById("formUrl").value = formUrl;
+        }
+      });
+    </script>
+  </body>
+</html>
