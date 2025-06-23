@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Play, Sparkles, MapPin } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const { t } = useTranslation();
+  const { t } = useLanguage();
 
   const slides = [
     {
       image: "/hero/1.jpg",
-      title: t("home.hero.title"),
-      subtitle: t("home.hero.subtitle"),
+      title: t("heroTitle"),
+      subtitle: t("heroSubtitle"),
       accent: "The Pearl of the Indian Ocean awaits",
     },
     {
@@ -127,13 +127,13 @@ const Hero: React.FC = () => {
             style={{ animationDelay: "0.4s" }}
           >
             <button className="group relative overflow-hidden bg-gradient-to-r from-emerald-600 via-teal-600 to-sapphire-600 text-white px-10 py-4 rounded-full text-lg font-semibold shadow-2xl hover:shadow-emerald-500/25 transform hover:scale-105 transition-all duration-500 animate-pulse-glow">
-              <span className="relative z-10">{t("home.hero.cta")}</span>
+              <span className="relative z-10">{t("exploreTours")}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-sapphire-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </button>
 
             <button className="group flex items-center gap-3 glass-effect text-white px-10 py-4 rounded-full text-lg font-semibold border border-white/30 hover:bg-white/20 transform hover:scale-105 transition-all duration-500">
               <Play className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
-              <span>Watch Story</span>
+              <span>{t("watchVideo")}</span>
             </button>
           </div>
 
@@ -167,7 +167,7 @@ const Hero: React.FC = () => {
       >
         <div className="flex flex-col items-center gap-2">
           <span className="text-sm font-medium opacity-80 group-hover:opacity-100">
-            {t("home.hero.scrollDown")}
+            Scroll Down
           </span>
           <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center group-hover:border-emerald-300">
             <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce group-hover:bg-emerald-300" />

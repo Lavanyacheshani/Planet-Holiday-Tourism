@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../contexts/LanguageContext";
 import { Globe, ChevronDown, Check } from "lucide-react";
 
 interface Language {
@@ -16,15 +16,15 @@ const languages: Language[] = [
 ];
 
 const LanguageSwitcher: React.FC = () => {
-  const { i18n, t } = useTranslation();
+  const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const currentLanguage =
-    languages.find((lang) => lang.code === i18n.language) || languages[0];
+    languages.find((lang) => lang.code === language) || languages[0];
 
   const handleLanguageChange = (languageCode: string) => {
-    i18n.changeLanguage(languageCode);
+    setLanguage(languageCode);
     setIsOpen(false);
   };
 
@@ -49,7 +49,7 @@ const LanguageSwitcher: React.FC = () => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        aria-label={t("common.language")}
+        aria-label="Language"
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
@@ -71,7 +71,7 @@ const LanguageSwitcher: React.FC = () => {
                 key={language.code}
                 onClick={() => handleLanguageChange(language.code)}
                 className={`w-full flex items-center px-4 py-2 text-sm text-left hover:bg-gray-100 transition-colors duration-200 ${
-                  i18n.language === language.code
+                  language === language.code
                     ? "bg-blue-50 text-blue-700"
                     : "text-gray-700"
                 }`}
@@ -79,7 +79,7 @@ const LanguageSwitcher: React.FC = () => {
               >
                 <span className="text-lg mr-3">{language.flag}</span>
                 <span className="flex-1">{language.name}</span>
-                {i18n.language === language.code && (
+                {language === language.code && (
                   <Check className="w-4 h-4 text-blue-600" />
                 )}
               </button>
