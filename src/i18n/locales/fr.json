@@ -1,0 +1,311 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "view": "Voir",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "all": "Tout",
+    "yes": "Oui",
+    "no": "Non",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "submit": "Soumettre",
+    "close": "Fermer",
+    "open": "Ouvrir",
+    "language": "Langue"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "destinations": "Destinations",
+    "tours": "Circuits",
+    "activities": "Activités",
+    "blog": "Blog",
+    "contact": "Contact",
+    "admin": "Admin",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "register": "S'inscrire",
+    "profile": "Profil",
+    "settings": "Paramètres"
+  },
+  "home": {
+    "hero": {
+      "title": "Découvrez la Magie du Sri Lanka",
+      "subtitle": "Vivez des paysages époustouflants, une culture riche et des aventures inoubliables",
+      "cta": "Explorer les Circuits",
+      "scrollDown": "Faire défiler"
+    },
+    "features": {
+      "title": "Pourquoi Choisir Planet Holiday",
+      "subtitle": "Votre partenaire de confiance pour des expériences authentiques sri-lankaises",
+      "feature1": {
+        "title": "Guides Experts",
+        "description": "Experts locaux avec une connaissance approfondie de la culture et de l'histoire du Sri Lanka"
+      },
+      "feature2": {
+        "title": "Circuits Personnalisés",
+        "description": "Expériences sur mesure conçues autour de vos intérêts et préférences"
+      },
+      "feature3": {
+        "title": "Meilleurs Prix",
+        "description": "Tarifs compétitifs sans coûts cachés ni surprises"
+      },
+      "feature4": {
+        "title": "Support 24/7",
+        "description": "Assistance 24h/24 et 7j/7 tout au long de votre voyage"
+      }
+    },
+    "destinations": {
+      "title": "Destinations Populaires",
+      "subtitle": "Explorez les plus beaux endroits du Sri Lanka",
+      "viewAll": "Voir Toutes les Destinations"
+    },
+    "tours": {
+      "title": "Circuits Vedettes",
+      "subtitle": "Expériences sélectionnées pour des souvenirs inoubliables",
+      "viewAll": "Voir Tous les Circuits"
+    },
+    "testimonials": {
+      "title": "Ce que Disent Nos Clients",
+      "subtitle": "Expériences réelles de vrais voyageurs"
+    },
+    "cta": {
+      "title": "Prêt à Commencer Votre Aventure ?",
+      "subtitle": "Réservez vos vacances de rêve aujourd'hui et créez des souvenirs qui durent toute une vie",
+      "button": "Réserver Maintenant"
+    }
+  },
+  "about": {
+    "title": "À Propos de Planet Holiday",
+    "subtitle": "Votre Porte d'Entrée vers des Expériences Authentiques Sri-Lankaises",
+    "story": {
+      "title": "Notre Histoire",
+      "content": "Fondée avec une passion pour mettre en valeur la beauté et la culture du Sri Lanka, Planet Holiday crée des expériences de voyage inoubliables depuis plus d'une décennie. Nous croyons en un tourisme authentique et durable qui profite à la fois à nos clients et aux communautés locales."
+    },
+    "mission": {
+      "title": "Notre Mission",
+      "content": "Fournir des expériences de voyage exceptionnelles qui connectent les visiteurs avec la riche culture, les paysages époustouflants et l'hospitalité chaleureuse du Sri Lanka tout en promouvant des pratiques touristiques durables."
+    },
+    "values": {
+      "title": "Nos Valeurs",
+      "authenticity": "Authenticité",
+      "authenticityDesc": "Expériences authentiques qui reflètent le véritable esprit du Sri Lanka",
+      "sustainability": "Durabilité",
+      "sustainabilityDesc": "Tourisme responsable qui protège notre environnement et nos communautés",
+      "excellence": "Excellence",
+      "excellenceDesc": "Qualité sans compromis dans tous les aspects de notre service",
+      "hospitality": "Hospitalité",
+      "hospitalityDesc": "Soins chaleureux et personnalisés pour chaque client"
+    },
+    "team": {
+      "title": "Rencontrez Notre Équipe",
+      "subtitle": "Professionnels passionnés dédiés à vos vacances parfaites"
+    },
+    "stats": {
+      "title": "Nos Chiffres",
+      "guests": "Clients Satisfaits",
+      "tours": "Circuits Réussis",
+      "destinations": "Destinations",
+      "years": "Années d'Expérience"
+    }
+  },
+  "destinations": {
+    "title": "Destinations",
+    "subtitle": "Explorez les paysages diversifiés et la riche culture du Sri Lanka",
+    "filters": {
+      "all": "Toutes les Destinations",
+      "cultural": "Culturel",
+      "beach": "Plage",
+      "mountain": "Montagne",
+      "wildlife": "Faune",
+      "historical": "Historique",
+      "religious": "Religieux",
+      "adventure": "Aventure",
+      "city": "Ville"
+    },
+    "search": "Rechercher des destinations...",
+    "viewDetails": "Voir les Détails",
+    "bookTour": "Réserver un Circuit",
+    "highlights": "Points Forts",
+    "bestTime": "Meilleure Période pour Visiter",
+    "activities": "Activités",
+    "accommodation": "Hébergement",
+    "transportation": "Transport",
+    "tips": "Conseils de Voyage"
+  },
+  "tours": {
+    "title": "Circuits Touristiques",
+    "subtitle": "Expériences artisanales pour tous les types de voyageurs",
+    "filters": {
+      "all": "Tous les Circuits",
+      "cultural": "Culturel",
+      "adventure": "Aventure",
+      "beach": "Plage",
+      "wildlife": "Faune",
+      "luxury": "Luxe",
+      "family": "Famille",
+      "honeymoon": "Lune de Miel",
+      "budget": "Budget"
+    },
+    "search": "Rechercher des circuits...",
+    "duration": "Durée",
+    "price": "Prix",
+    "perPerson": "par personne",
+    "groupSize": "Taille du Groupe",
+    "difficulty": "Difficulté",
+    "minAge": "Âge Minimum",
+    "included": "Ce qui est Inclus",
+    "excluded": "Ce qui n'est Pas Inclus",
+    "itinerary": "Itinéraire",
+    "highlights": "Points Forts",
+    "bookNow": "Réserver Maintenant",
+    "viewDetails": "Voir les Détails",
+    "from": "à partir de",
+    "originalPrice": "Prix Original",
+    "discount": "Réduction"
+  },
+  "activities": {
+    "title": "Activités",
+    "subtitle": "Aventures passionnantes et expériences culturelles",
+    "categories": {
+      "cultural": "Activités Culturelles",
+      "adventure": "Sports d'Aventure",
+      "nature": "Nature et Faune",
+      "water": "Activités Nautiques",
+      "wellness": "Bien-être et Spa",
+      "food": "Cuisine et Gastronomie"
+    },
+    "duration": "Durée",
+    "difficulty": "Niveau de Difficulté",
+    "price": "Prix",
+    "bookActivity": "Réserver l'Activité",
+    "viewDetails": "Voir les Détails"
+  },
+  "blog": {
+    "title": "Blog de Voyage",
+    "subtitle": "Histoires, conseils et aperçus du Sri Lanka",
+    "categories": {
+      "all": "Tous les Articles",
+      "travelTips": "Conseils de Voyage",
+      "destinationGuides": "Guides de Destination",
+      "culturalInsights": "Aperçus Culturels",
+      "adventureStories": "Histoires d'Aventure",
+      "foodCuisine": "Cuisine et Gastronomie",
+      "photography": "Photographie",
+      "travelPlanning": "Planification de Voyage",
+      "localExperiences": "Expériences Locales",
+      "seasonalTravel": "Voyage Saisonnier",
+      "travelNews": "Actualités de Voyage"
+    },
+    "search": "Rechercher des articles...",
+    "readMore": "Lire Plus",
+    "publishedOn": "Publié le",
+    "author": "Auteur",
+    "readingTime": "min de lecture",
+    "tags": "Tags",
+    "relatedPosts": "Articles Connexes",
+    "share": "Partager",
+    "comments": "Commentaires",
+    "leaveComment": "Laisser un Commentaire",
+    "commentForm": {
+      "name": "Nom",
+      "email": "Email",
+      "comment": "Commentaire",
+      "submit": "Publier le Commentaire"
+    }
+  },
+  "contact": {
+    "title": "Contactez-Nous",
+    "subtitle": "Entrez en contact avec nos experts de voyage",
+    "info": {
+      "title": "Nous Contacter",
+      "address": "Adresse",
+      "addressValue": "123 Rue du Voyage, Colombo, Sri Lanka",
+      "phone": "Téléphone",
+      "phoneValue": "+94 11 234 5678",
+      "email": "Email",
+      "emailValue": "info@planethoday.lk",
+      "hours": "Heures d'Ouverture",
+      "hoursValue": "Lundi - Vendredi : 9h00 - 18h00"
+    },
+    "form": {
+      "title": "Envoyez-nous un Message",
+      "name": "Nom Complet",
+      "email": "Adresse Email",
+      "phone": "Numéro de Téléphone",
+      "subject": "Sujet",
+      "message": "Message",
+      "submit": "Envoyer le Message",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès !",
+      "error": "Échec de l'envoi du message. Veuillez réessayer."
+    },
+    "booking": {
+      "title": "Réserver un Circuit",
+      "subtitle": "Prêt à commencer votre aventure ? Laissez-nous vous aider à planifier le voyage parfait.",
+      "tour": "Sélectionner un Circuit",
+      "date": "Date Préférée",
+      "guests": "Nombre de Voyageurs",
+      "specialRequests": "Demandes Spéciales",
+      "submit": "Demander une Réservation",
+      "success": "Demande de réservation envoyée avec succès !",
+      "error": "Échec de l'envoi de la demande de réservation. Veuillez réessayer."
+    }
+  },
+  "footer": {
+    "description": "Votre partenaire de confiance pour des expériences de voyage authentiques au Sri Lanka. Découvrez la magie de cette belle île avec nos guides experts et circuits personnalisés.",
+    "quickLinks": "Liens Rapides",
+    "tours": "Circuits",
+    "destinations": "Destinations",
+    "about": "À Propos",
+    "contact": "Contact",
+    "support": "Support",
+    "help": "Centre d'Aide",
+    "faq": "FAQ",
+    "terms": "Conditions Générales",
+    "privacy": "Politique de Confidentialité",
+    "social": "Suivez-Nous",
+    "newsletter": {
+      "title": "Restez Informé",
+      "subtitle": "Abonnez-vous à notre newsletter pour des conseils de voyage et offres spéciales",
+      "placeholder": "Entrez votre email",
+      "subscribe": "S'abonner",
+      "success": "Abonnement réussi !",
+      "error": "Échec de l'abonnement. Veuillez réessayer."
+    },
+    "copyright": "© 2024 Planet Holiday Tourism. Tous droits réservés."
+  },
+  "admin": {
+    "dashboard": "Tableau de Bord",
+    "tourPackages": "Circuits Touristiques",
+    "destinations": "Destinations",
+    "blogArticles": "Articles de Blog",
+    "bookings": "Réservations",
+    "settings": "Paramètres",
+    "stats": {
+      "totalBookings": "Total des Réservations",
+      "revenue": "Revenus",
+      "tourPackages": "Circuits Touristiques",
+      "destinations": "Destinations"
+    },
+    "quickActions": "Actions Rapides",
+    "addTourPackage": "Ajouter un Circuit",
+    "addDestination": "Ajouter une Destination",
+    "writeArticle": "Écrire un Article",
+    "recentActivity": "Activité Récente"
+  },
+  "languages": {
+    "en": "English",
+    "zh": "中文",
+    "fr": "Français",
+    "de": "Deutsch"
+  }
+}
