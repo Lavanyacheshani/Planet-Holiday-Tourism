@@ -23,7 +23,7 @@ const TourPackages: React.FC = () => {
     {
       id: 1,
       title: 'Cultural Triangle Explorer',
-      image: 'https://images.pexels.com/photos/3619971/pexels-photo-3619971.jpeg',
+      image: '/tour/kandydance.jpg',
       duration: '7 Days / 6 Nights',
       price: 899,
       originalPrice: 1199,
@@ -36,7 +36,7 @@ const TourPackages: React.FC = () => {
     {
       id: 2,
       title: 'Beach & Wildlife Adventure',
-      image: 'https://images.pexels.com/photos/3250364/pexels-photo-3250364.jpeg',
+      image: '/tour/img-5.jpg',
       duration: '10 Days / 9 Nights',
       price: 1299,
       originalPrice: 1599,
@@ -49,7 +49,7 @@ const TourPackages: React.FC = () => {
     {
       id: 3,
       title: 'Hill Country Escape',
-      image: 'https://images.pexels.com/photos/2850200/pexels-photo-2850200.jpeg',
+      image: '/tour/ella.jpg',
       duration: '5 Days / 4 Nights',
       price: 699,
       rating: 4.7,
@@ -61,7 +61,7 @@ const TourPackages: React.FC = () => {
     {
       id: 4,
       title: 'Luxury Ceylon Experience',
-      image: 'https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg',
+      image: '/tour/paragliding.jpg',
       duration: '12 Days / 11 Nights',
       price: 2299,
       originalPrice: 2799,
@@ -74,7 +74,7 @@ const TourPackages: React.FC = () => {
     {
       id: 5,
       title: 'Adventure Seeker Special',
-      image: 'https://images.pexels.com/photos/2577274/pexels-photo-2577274.jpeg',
+      image: '/tour/img-1.jpg',
       duration: '8 Days / 7 Nights',
       price: 1099,
       rating: 4.6,
@@ -86,7 +86,7 @@ const TourPackages: React.FC = () => {
     {
       id: 6,
       title: 'Family Fun Package',
-      image: 'https://images.pexels.com/photos/4825711/pexels-photo-4825711.jpeg',
+      image: '/tour/group-3.jpg',
       duration: '6 Days / 5 Nights',
       price: 799,
       rating: 4.8,

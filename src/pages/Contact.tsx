@@ -1,6 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
 import { googleFormsService } from "../services/googleFormsService";
+import { useLocation } from "react-router-dom";
+
+const featuredDestinations = [
+  "Sigiriya Rock Fortress",
+  "Kandy Temple of Tooth",
+  "Yala National Park",
+  "Galle Fort",
+  "Ella Nine Arches Bridge",
+  "Mirissa Beach",
+];
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +24,27 @@ const Contact: React.FC = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const location = typeof window !== 'undefined' ? window.location : { search: '' };
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const destination = params.get('destination');
+    const price = params.get('price');
+    const duration = params.get('duration');
+    let prefillMessage = formData.message;
+    if (destination) {
+      prefillMessage = `Hello, I would like to book the "${destination}" tour`;
+      if (price) prefillMessage += ` (Price: $${price})`;
+      if (duration) prefillMessage += ` for ${duration}`;
+      prefillMessage += ". Please provide more details.";
+    }
+    setFormData((prev) => ({
+      ...prev,
+      tourInterest: destination || prev.tourInterest,
+      message: prefillMessage,
+    }));
+  }, [location.search]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -67,6 +98,7 @@ const Contact: React.FC = () => {
   };
 
   const tourOptions = [
+    ...featuredDestinations,
     "Cultural Triangle Explorer",
     "Beach & Wildlife Adventure",
     "Hill Country Escape",

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, Star, Clock, Users, Camera, Heart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface Destination {
   id: number;
@@ -14,7 +15,11 @@ interface Destination {
   price: number;
 }
 
-const FeaturedDestinations: React.FC = () => {
+interface FeaturedDestinationsProps {
+  showExploreButton?: boolean;
+}
+
+const FeaturedDestinations: React.FC<FeaturedDestinationsProps> = ({ showExploreButton = true }) => {
   const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
@@ -22,7 +27,7 @@ const FeaturedDestinations: React.FC = () => {
     {
       id: 1,
       name: 'Sigiriya Rock Fortress',
-      image: 'https://images.pexels.com/photos/3619971/pexels-photo-3619971.jpeg',
+      image: '/des/1.jpg',
       description: 'Ancient citadel built on a massive rock formation, offering breathtaking views and rich history.',
       rating: 4.9,
       duration: '4-5 hours',
@@ -34,7 +39,7 @@ const FeaturedDestinations: React.FC = () => {
     {
       id: 2,
       name: 'Kandy Temple of Tooth',
-      image: 'https://images.pexels.com/photos/4825711/pexels-photo-4825711.jpeg',
+      image: '/des/dalada.webp',
       description: 'Sacred Buddhist temple housing the relic of the tooth of Buddha, surrounded by cultural heritage.',
       rating: 4.8,
       duration: '2-3 hours',
@@ -46,7 +51,7 @@ const FeaturedDestinations: React.FC = () => {
     {
       id: 3,
       name: 'Yala National Park',
-      image: 'https://images.pexels.com/photos/3250364/pexels-photo-3250364.jpeg',
+      image: '/des/yala.jpg',
       description: 'Sri Lanka\'s premier wildlife destination with the highest density of leopards in the world.',
       rating: 4.7,
       duration: 'Full day',
@@ -58,7 +63,7 @@ const FeaturedDestinations: React.FC = () => {
     {
       id: 4,
       name: 'Galle Fort',
-      image: 'https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg',
+      image: '/des/galle.jpg',
       description: 'Historic Dutch colonial fort with charming streets, boutique shops, and ocean views.',
       rating: 4.6,
       duration: '3-4 hours',
@@ -70,7 +75,7 @@ const FeaturedDestinations: React.FC = () => {
     {
       id: 5,
       name: 'Ella Nine Arches Bridge',
-      image: 'https://images.pexels.com/photos/2850200/pexels-photo-2850200.jpeg',
+      image: '/des/ella2.jpg',
       description: 'Iconic railway bridge surrounded by lush tea plantations and misty mountains.',
       rating: 4.5,
       duration: '2-3 hours',
@@ -82,7 +87,7 @@ const FeaturedDestinations: React.FC = () => {
     {
       id: 6,
       name: 'Mirissa Beach',
-      image: 'https://images.pexels.com/photos/2577274/pexels-photo-2577274.jpeg',
+      image: '/des/2.jpg',
       description: 'Paradise beach perfect for whale watching, surfing, and relaxing on golden sands.',
       rating: 4.8,
       duration: 'Half/Full day',
@@ -209,6 +214,20 @@ const FeaturedDestinations: React.FC = () => {
           ))}
         </div>
 
+        {/* Explore More Destinations Button */}
+        {showExploreButton && (
+          <div className="flex justify-center mt-12">
+            <Link
+              to="/destinations"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sapphire-600 via-ocean-500 to-teal-500 text-white text-lg font-bold rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 hover:from-sapphire-700 hover:to-teal-600 focus:outline-none focus:ring-4 focus:ring-sapphire-300 animate-fade-in-up"
+              style={{ background: 'linear-gradient(90deg, #0f52ba 0%, #0077be 50%, #20b2aa 100%)' }}
+            >
+              <MapPin className="w-6 h-6 mr-2" />
+              Explore More Destinations
+            </Link>
+          </div>
+        )}
+
         {/* Enhanced Modal */}
         {selectedDestination && (
           <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
@@ -284,12 +303,12 @@ const FeaturedDestinations: React.FC = () => {
                 </div>
                 
                 <div className="flex gap-4">
-                  <button className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 transform hover:scale-105">
+                  <a
+                    className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 transform hover:scale-105 text-center flex items-center justify-center"
+                    href={`/contact?destination=${encodeURIComponent(selectedDestination.name)}&price=${selectedDestination.price}&duration=${encodeURIComponent(selectedDestination.duration)}`}
+                  >
                     Book This Destination
-                  </button>
-                  <button className="px-8 py-4 border-2 border-emerald-600 text-emerald-600 rounded-full font-semibold hover:bg-emerald-50 transition-all duration-300">
-                    Learn More
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

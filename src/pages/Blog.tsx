@@ -22,7 +22,7 @@ const Blog: React.FC = () => {
       id: 1,
       title: 'The Ultimate Guide to Sigiriya Rock Fortress',
       excerpt: 'Discover the secrets of this ancient citadel and learn the best times to visit, what to expect, and insider tips for an unforgettable experience.',
-      image: 'https://images.pexels.com/photos/3619971/pexels-photo-3619971.jpeg',
+      image: '/des/1.jpg',
       author: 'Rajesh Fernando',
       date: '2024-01-15',
       readTime: '8 min read',

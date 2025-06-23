@@ -8,7 +8,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <Hero />
-      <FeaturedDestinations />
+      <FeaturedDestinations showExploreButton={true} />
       <TourPackages />
       <Testimonials />
     </div>
