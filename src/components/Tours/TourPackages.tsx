@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, Users, MapPin, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from "framer-motion";
 
 interface Tour {
   id: number;
@@ -127,7 +128,13 @@ const TourPackages: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <motion.section
+      className="py-20 bg-white"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 animate-slide-up">
@@ -141,8 +148,10 @@ const TourPackages: React.FC = () => {
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((category) => (
-            <button
+            <motion.button
               key={category.id}
+              whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.15)" }}
+              whileTap={{ scale: 0.97 }}
               onClick={() => {
                 setSelectedCategory(category.id);
                 setCurrentSlide(0);
@@ -154,7 +163,7 @@ const TourPackages: React.FC = () => {
               }`}
             >
               {category.label}
-            </button>
+            </motion.button>
           ))}
         </div>
 
@@ -226,9 +235,13 @@ const TourPackages: React.FC = () => {
                     </div>
                   </div>
 
-                  <button className="w-full bg-primary-600 text-white py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors duration-300">
+                  <motion.button
+                    whileHover={{ scale: 1.05, boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.15)" }}
+                    whileTap={{ scale: 0.97 }}
+                    className="w-full bg-primary-600 text-white py-3 rounded-full font-semibold hover:bg-primary-700 transition-colors duration-300"
+                  >
                     Book Now
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             ))}
@@ -268,7 +281,7 @@ const TourPackages: React.FC = () => {
           </div>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

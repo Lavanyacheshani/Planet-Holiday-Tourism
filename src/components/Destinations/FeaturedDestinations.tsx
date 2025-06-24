@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MapPin, Star, Clock, Users, Camera, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 interface Destination {
   id: number;
@@ -110,7 +111,13 @@ const FeaturedDestinations: React.FC<FeaturedDestinationsProps> = ({ showExplore
   };
 
   return (
-    <section className="section-padding bg-gradient-to-b from-white via-emerald-50/30 to-teal-50/50">
+    <motion.section
+      className="section-padding bg-gradient-to-b from-white via-emerald-50/30 to-teal-50/50"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
       <div className="container-custom">
         {/* Enhanced Header */}
         <div className="text-center mb-20">
@@ -205,9 +212,13 @@ const FeaturedDestinations: React.FC<FeaturedDestinationsProps> = ({ showExplore
                   </div>
                   
                   {/* Action Button */}
-                  <button className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-emerald-500/25 transform hover:scale-105 transition-all duration-300 group-hover:from-emerald-500 group-hover:to-teal-500">
+                  <motion.button
+                    whileHover={{ scale: 1.05, boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.15)" }}
+                    whileTap={{ scale: 0.97 }}
+                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-3 rounded-full font-semibold hover:shadow-lg hover:shadow-emerald-500/25 transform hover:scale-105 transition-all duration-300 group-hover:from-emerald-500 group-hover:to-teal-500"
+                  >
                     Explore Destination
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </div>
@@ -315,7 +326,7 @@ const FeaturedDestinations: React.FC<FeaturedDestinationsProps> = ({ showExplore
           </div>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

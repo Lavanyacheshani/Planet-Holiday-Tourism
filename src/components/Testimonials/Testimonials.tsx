@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from "framer-motion";
 
 interface Testimonial {
   id: number;
@@ -87,7 +88,13 @@ const Testimonials: React.FC = () => {
   const currentData = testimonials[currentTestimonial];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-50 to-teal-50">
+    <motion.section
+      className="py-20 bg-gradient-to-br from-primary-50 to-teal-50"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4 animate-slide-up">
@@ -134,18 +141,22 @@ const Testimonials: React.FC = () => {
           </div>
 
           {/* Navigation Arrows */}
-          <button
+          <motion.button
+            whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.15)" }}
+            whileTap={{ scale: 0.97 }}
             onClick={prevTestimonial}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors duration-300 hidden lg:block"
           >
             <ChevronLeft className="w-6 h-6 text-gray-600" />
-          </button>
-          <button
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.15)" }}
+            whileTap={{ scale: 0.97 }}
             onClick={nextTestimonial}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white shadow-lg rounded-full p-3 hover:bg-gray-50 transition-colors duration-300 hidden lg:block"
           >
             <ChevronRight className="w-6 h-6 text-gray-600" />
-          </button>
+          </motion.button>
         </div>
 
         {/* Indicators */}
@@ -183,7 +194,7 @@ const Testimonials: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

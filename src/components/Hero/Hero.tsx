@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Play, Sparkles, MapPin } from "lucide-react";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { motion } from "framer-motion";
 
 const Hero: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -43,7 +44,12 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <motion.section
+      className="relative h-screen overflow-hidden"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
       {/* Background Slides with Enhanced Parallax */}
       {slides.map((slide, index) => (
         <div
@@ -97,25 +103,23 @@ const Hero: React.FC = () => {
 
       {/* Enhanced Content */}
       <div className="relative z-10 h-full flex items-center justify-center">
-        <div className="text-center text-white px-4 max-w-6xl mx-auto">
+        <div className="text-center text-white px-2 sm:px-4 max-w-xs sm:max-w-2xl lg:max-w-6xl mx-auto">
           {/* Accent Text */}
           <div className="mb-4 animate-fade-in-down">
-            <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-2 text-sm font-medium text-white/90">
+            <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium text-white/90">
               <MapPin className="w-4 h-4" />
               {slides[currentSlide].accent}
             </span>
           </div>
 
           {/* Main Title with Gradient */}
-          <h1 className="heading-primary text-9xl mb-6 animate-fade-in-up">
-            {/* <span className="block text-gradient-gold animate-text-glow"> */}
+          <h1 className="heading-primary text-3xl sm:text-5xl lg:text-9xl mb-4 sm:mb-6 animate-fade-in-up break-words">
             {slides[currentSlide].title}
-            {/* </span> */}
           </h1>
 
           {/* Subtitle */}
           <p
-            className="text-body-large mb-12 animate-fade-in-up opacity-90 font-light max-w-4xl mx-auto"
+            className="text-base sm:text-xl lg:text-2xl mb-8 sm:mb-12 animate-fade-in-up opacity-90 font-light max-w-xs sm:max-w-2xl lg:max-w-4xl mx-auto"
             style={{ animationDelay: "0.2s" }}
           >
             {slides[currentSlide].subtitle}
@@ -123,18 +127,26 @@ const Hero: React.FC = () => {
 
           {/* Enhanced CTA Buttons */}
           <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in-up"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 animate-fade-in-up"
             style={{ animationDelay: "0.4s" }}
           >
-            <button className="group relative overflow-hidden bg-gradient-to-r from-emerald-600 via-teal-600 to-sapphire-600 text-white px-10 py-4 rounded-full text-lg font-semibold shadow-2xl hover:shadow-emerald-500/25 transform hover:scale-105 transition-all duration-500 animate-pulse-glow">
+            <motion.button
+              whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.25)" }}
+              whileTap={{ scale: 0.97 }}
+              className="group relative overflow-hidden bg-gradient-to-r from-emerald-600 via-teal-600 to-sapphire-600 text-white px-10 py-4 rounded-full text-lg font-semibold shadow-2xl hover:shadow-emerald-500/25 transition-all duration-500"
+            >
               <span className="relative z-10">{t("exploreTours")}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-sapphire-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </button>
+            </motion.button>
 
-            <button className="group flex items-center gap-3 glass-effect text-white px-10 py-4 rounded-full text-lg font-semibold border border-white/30 hover:bg-white/20 transform hover:scale-105 transition-all duration-500">
+            <motion.button
+              whileHover={{ scale: 1.08, boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.15)" }}
+              whileTap={{ scale: 0.97 }}
+              className="group flex items-center gap-3 glass-effect text-white px-10 py-4 rounded-full text-lg font-semibold border border-white/30 hover:bg-white/20 transition-all duration-500"
+            >
               <Play className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
               <span>{t("watchVideo")}</span>
-            </button>
+            </motion.button>
           </div>
 
           {/* Stats Bar */}
@@ -142,7 +154,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Enhanced Slide Indicators */}
-      <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+      <div className="absolute bottom-16 sm:bottom-32 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
@@ -163,26 +175,26 @@ const Hero: React.FC = () => {
       {/* Enhanced Scroll Indicator */}
       <button
         onClick={scrollToContent}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce-gentle cursor-pointer hover:text-emerald-300 transition-colors duration-300 group"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce-gentle cursor-pointer hover:text-emerald-300 transition-colors duration-300 group"
       >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-sm font-medium opacity-80 group-hover:opacity-100">
+        <div className="flex flex-col items-center gap-1 sm:gap-2">
+          <span className="text-xs sm:text-sm font-medium opacity-80 group-hover:opacity-100">
             Scroll Down
           </span>
-          <div className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center group-hover:border-emerald-300">
-            <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce group-hover:bg-emerald-300" />
+          <div className="w-6 sm:w-8 h-8 sm:h-12 border-2 border-white/50 rounded-full flex justify-center group-hover:border-emerald-300">
+            <div className="w-1 h-2 sm:h-3 bg-white/70 rounded-full mt-1 sm:mt-2 animate-bounce group-hover:bg-emerald-300" />
           </div>
         </div>
       </button>
 
       {/* Decorative Elements */}
-      <div className="absolute top-10 right-10 animate-rotate-slow opacity-20">
-        <div className="w-32 h-32 border border-white/30 rounded-full" />
+      <div className="absolute top-10 right-10 animate-rotate-slow opacity-20 hidden sm:block">
+        <div className="w-16 h-16 sm:w-32 sm:h-32 border border-white/30 rounded-full" />
       </div>
-      <div className="absolute bottom-20 left-10 animate-wave opacity-20">
-        <div className="w-24 h-24 border-2 border-white/30 rotate-45" />
+      <div className="absolute bottom-10 sm:bottom-20 left-10 animate-wave opacity-20 hidden sm:block">
+        <div className="w-12 h-12 sm:w-24 sm:h-24 border-2 border-white/30 rotate-45" />
       </div>
-    </section>
+    </motion.section>
   );
 };
 

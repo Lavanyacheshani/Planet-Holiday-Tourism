@@ -45,7 +45,7 @@ const About: React.FC = () => {
             </div>
             <div className="animate-slide-in-right">
               <img
-                src="https://images.pexels.com/photos/3619971/pexels-photo-3619971.jpeg"
+                src="/contact/1.jpg"
                 alt="About Us"
                 className="rounded-2xl shadow-2xl"
               />

@@ -8,6 +8,7 @@ import Destinations from "./pages/Destinations";
 import Tours from "./pages/Tours";
 import Activities from "./pages/Activities";
 import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
 import Footer from "./components/Footer/Footer";
@@ -27,6 +28,7 @@ function App() {
               <Route path="/tours" element={<Tours />} />
               <Route path="/activities" element={<Activities />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogDetail />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/admin" element={<Admin />} />
             </Routes>

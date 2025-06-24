@@ -25,7 +25,7 @@ const Activities: React.FC = () => {
     {
       id: 1,
       title: 'Whale Watching in Mirissa',
-      image: 'https://images.pexels.com/photos/2577274/pexels-photo-2577274.jpeg',
+      image: '/ac/1.jpg',
       description: 'Experience the thrill of spotting blue whales and dolphins in their natural habitat.',
       duration: '4-5 hours',
       groupSize: '2-25 people',
@@ -39,7 +39,7 @@ const Activities: React.FC = () => {
     {
       id: 2,
       title: 'White Water Rafting',
-      image: 'https://images.pexels.com/photos/3250364/pexels-photo-3250364.jpeg',
+      image: '/ac/2.jpg',
       description: 'Navigate thrilling rapids through lush jungle landscapes on the Kelani River.',
       duration: '3-4 hours',
       groupSize: '4-12 people',
@@ -53,7 +53,7 @@ const Activities: React.FC = () => {
     {
       id: 3,
       title: 'Tea Plantation Tours',
-      image: 'https://images.pexels.com/photos/2850200/pexels-photo-2850200.jpeg',
+      image: '/ac/3.jpg',
       description: 'Discover the art of tea making in the misty hills of central Sri Lanka.',
       duration: '2-3 hours',
       groupSize: '2-20 people',
@@ -67,7 +67,7 @@ const Activities: React.FC = () => {
     {
       id: 4,
       title: 'Surfing Lessons in Arugam Bay',
-      image: 'https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg',
+      image: '/ac/4.jpg',
       description: 'Learn to surf or improve your skills at one of Asia\'s best surf spots.',
       duration: '2-3 hours',
       groupSize: '1-6 people',
@@ -81,7 +81,7 @@ const Activities: React.FC = () => {
     {
       id: 5,
       title: 'Rock Climbing at Ella',
-      image: 'https://images.pexels.com/photos/4825711/pexels-photo-4825711.jpeg',
+      image: '/ac/5.jpg',
       description: 'Challenge yourself with rock climbing adventures in the scenic hill country.',
       duration: '4-6 hours',
       groupSize: '2-8 people',
@@ -95,7 +95,7 @@ const Activities: React.FC = () => {
     {
       id: 6,
       title: 'Elephant Orphanage Visit',
-      image: 'https://images.pexels.com/photos/3619971/pexels-photo-3619971.jpeg',
+      image: '/ac/6.jpg',
       description: 'Visit rescued elephants and learn about conservation efforts.',
       duration: '2-3 hours',
       groupSize: '2-30 people',

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, User, Clock, Search, Tag } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface BlogPost {
   id: number;
@@ -33,7 +34,7 @@ const Blog: React.FC = () => {
       id: 2,
       title: 'Best Beaches in Sri Lanka: A Complete Guide',
       excerpt: 'From the golden sands of Unawatuna to the surfing paradise of Arugam Bay, explore Sri Lanka\'s most stunning coastal destinations.',
-      image: 'https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg',
+      image: '/blog/2.jpg',
       author: 'Priya Wickramasinghe',
       date: '2024-01-10',
       readTime: '12 min read',
@@ -44,7 +45,7 @@ const Blog: React.FC = () => {
       id: 3,
       title: 'Wildlife Safari: Your Guide to Yala National Park',
       excerpt: 'Everything you need to know about planning the perfect safari adventure, including the best times for leopard spotting and what to pack.',
-      image: 'https://images.pexels.com/photos/3250364/pexels-photo-3250364.jpeg',
+      image: '/blog/3.jpg',
       author: 'Chaminda Silva',
       date: '2024-01-05',
       readTime: '10 min read',
@@ -55,7 +56,7 @@ const Blog: React.FC = () => {
       id: 4,
       title: 'Tea Country Adventures: Ella and Beyond',
       excerpt: 'Journey through the misty hills of Sri Lanka\'s tea country, from the famous Nine Arches Bridge to hidden plantation trails.',
-      image: 'https://images.pexels.com/photos/2850200/pexels-photo-2850200.jpeg',
+      image: '/blog/4.jpg',
       author: 'Rajesh Fernando',
       date: '2023-12-28',
       readTime: '6 min read',
@@ -66,7 +67,7 @@ const Blog: React.FC = () => {
       id: 5,
       title: 'Sri Lankan Cuisine: A Food Lover\'s Paradise',
       excerpt: 'Embark on a culinary journey through Sri Lanka\'s diverse flavors, from street food to fine dining experiences.',
-      image: 'https://images.pexels.com/photos/4825711/pexels-photo-4825711.jpeg',
+      image: '/blog/5.jpg',
       author: 'Priya Wickramasinghe',
       date: '2023-12-20',
       readTime: '7 min read',
@@ -77,7 +78,7 @@ const Blog: React.FC = () => {
       id: 6,
       title: 'Budget Travel Guide to Sri Lanka',
       excerpt: 'Discover how to explore Sri Lanka without breaking the bank, with insider tips on affordable accommodations, transport, and activities.',
-      image: 'https://images.pexels.com/photos/2577274/pexels-photo-2577274.jpeg',
+      image: '/blog/6.webp',
       author: 'Chaminda Silva',
       date: '2023-12-15',
       readTime: '15 min read',
@@ -221,9 +222,12 @@ const Blog: React.FC = () => {
                       ))}
                     </div>
 
-                    <button className="w-full bg-primary-600 text-white py-3 rounded-full font-medium hover:bg-primary-700 transition-colors duration-300">
+                    <Link
+                      to={`/blog/${post.id}`}
+                      className="w-full bg-primary-600 text-white py-3 rounded-full font-medium hover:bg-primary-700 transition-colors duration-300 flex items-center justify-center text-center"
+                    >
                       Read More
-                    </button>
+                    </Link>
                   </div>
                 </article>
               ))}
